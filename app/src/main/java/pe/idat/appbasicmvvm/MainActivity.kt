@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
 import pe.idat.appbasicmvvm.auth.AuthViewModel
 import pe.idat.appbasicmvvm.auth.authScreen
 import pe.idat.appbasicmvvm.ui.theme.AppbasicmvvmTheme
@@ -21,6 +22,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AppbasicmvvmTheme {
+                val navigation = rememberNavController()
+
                 authScreen(AuthViewModel())
             }
         }
