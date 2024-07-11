@@ -62,6 +62,8 @@ fun body(modifier: Modifier, authViewModel: AuthViewModel) {
     Column(modifier.padding(start = 10.dp, end = 10.dp)) {
         Spacer(Modifier.size(15.dp))
         txtusuario(usuario) { authViewModel.onLoginValueChanged(it) }
+        Spacer(Modifier.size(15.dp))
+        txtpassword(usuario) { authViewModel.onLoginValueChanged(it) }
 
     }
 }
