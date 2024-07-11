@@ -14,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -59,12 +60,14 @@ fun header(modifier: Modifier) {
 @Composable
 fun body(modifier: Modifier, authViewModel: AuthViewModel) {
     val usuario:String by authViewModel.usuario.observeAsState(initial = "")
+    val password:String by authViewModel.password.observeAsState(initial = "")
     Column(modifier.padding(start = 10.dp, end = 10.dp)) {
         Spacer(Modifier.size(15.dp))
-        txtusuario(usuario) { authViewModel.onLoginValueChanged(it) }
+        txtusuario(usuario) { authViewModel.onLoginValueChanged(it, password) }
         Spacer(Modifier.size(15.dp))
-        txtpassword(usuario) { authViewModel.onLoginValueChanged(it) }
-
+        txtpassword(password) { authViewModel.onLoginValueChanged(usuario, it) }
+        Spacer(Modifier.size(15.dp))
+        loginButton()
     }
 }
 
@@ -101,4 +104,12 @@ fun txtpassword(password: String, onTextChanged: (String) -> Unit) {
             VisualTransformation.None
         } else PasswordVisualTransformation()
     )
+}
+
+@Composable
+fun loginButton(){
+    Button(onClick = { /*TODO*/ },
+        modifier = Modifier.fillMaxWidth()) {
+        Text(text = "INGRESAR")
+    }
 }
