@@ -10,11 +10,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
 @Composable
-fun homeScreen(){
+fun homeScreen(id: Int){
     Box(modifier = Modifier
         .fillMaxSize()
         .background(Color.Red)){
-        Text(text = "Bienvenido",
+        Text(text = "Bienvenido $id !!",
             modifier = Modifier.align(Alignment.Center))
     }
 }

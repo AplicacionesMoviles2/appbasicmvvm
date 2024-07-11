@@ -11,9 +11,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import pe.idat.appbasicmvvm.auth.AuthViewModel
 import pe.idat.appbasicmvvm.auth.authScreen
 import pe.idat.appbasicmvvm.home.homeScreen
@@ -33,8 +35,12 @@ class MainActivity : ComponentActivity() {
                         composable(AppRoutes.loginScreen.path){
                             authScreen(AuthViewModel())
                         }
-                        composable(AppRoutes.homeScreen.path){
-                            homeScreen()
+                        composable(AppRoutes.homeScreen.path,
+                            arguments = listOf(navArgument("id")
+                            {type = NavType.IntType} )
+                        ){
+                            params ->
+                            homeScreen(params.arguments?.getInt("id") ?: 0)
                         }
                     })
             }
